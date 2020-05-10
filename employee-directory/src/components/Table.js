@@ -50,7 +50,7 @@ const EmployeeTable = (props) => {
                         <button
                             type="button"
                             onClick={() => requestSort('name')}
-                            className={getClassNamesFor('name')}
+                            className={getClassNamesFor('name'), "btn btn-primary btn-lg active"}
                         >
                         Name
                         </button>
@@ -59,7 +59,7 @@ const EmployeeTable = (props) => {
                         <button
                             type="button"
                             onClick={() => requestSort('role')}
-                            className={getClassNamesFor('role')}
+                            className={getClassNamesFor('role'), "btn btn-primary btn-lg active"}
                         >
                         Role
                         </button>
@@ -68,7 +68,7 @@ const EmployeeTable = (props) => {
                         <button
                             type="button"
                             onClick={() => requestSort('dob')}
-                            className={getClassNamesFor('dob')}
+                            className={getClassNamesFor('dob'), "btn btn-primary btn-lg active"}
                         >
                         Date of Birth
                         </button>
