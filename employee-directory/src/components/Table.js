@@ -19,8 +19,22 @@ const sortableData = (employees, config = null) => {
         return sortableEmployees;
     }, [employees, sortConfig]);
 
-    
-}
+    const requestSort = (key) => {
+        let direction = 'ascending';
+        if (
+            sortConfig &&
+            sortConfig.key === key &&
+            sortConfig.direction === 'ascending'
+        ) {
+            direction = 'descending';
+        }
+        setSortConfig({ key, direction });
+    };
+
+    return { employees: sortedEmployees, requestSort, sortConfig };
+};
+
+
 
 // function Table() {
 //     return(
