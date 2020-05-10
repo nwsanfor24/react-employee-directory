@@ -46,7 +46,7 @@ const EmployeeTable = (props) => {
         <table className="table">
             <thead>
                 <tr>
-                    <th>
+                    <th scope="col">
                         <button
                             type="button"
                             onClick={() => requestSort('name')}
@@ -55,7 +55,7 @@ const EmployeeTable = (props) => {
                         Name
                         </button>
                     </th>
-                    <th>
+                    <th scope="col">
                         <button
                             type="button"
                             onClick={() => requestSort('role')}
@@ -64,7 +64,7 @@ const EmployeeTable = (props) => {
                         Role
                         </button>
                     </th>
-                    <th>
+                    <th scope="col">
                         <button
                             type="button"
                             onClick={() => requestSort('dob')}
