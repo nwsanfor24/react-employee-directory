@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useMemo} from "react";
 
-const sortableData = (employees, config = null) => {
-    const [sortConfig, setSortConfig] = React.useState(config);
+const SortableData = (employees, config = null) => {
+    const [sortConfig, setSortConfig] = useState(config);
 
-    const sortedEmployees = React.useMemo(() => {
+    const sortedEmployees = useMemo(() => {
         let sortableEmployees = [...employees];
         if (sortConfig !== null) {
             sortableEmployees.sort((a, b) => {
@@ -35,7 +35,7 @@ const sortableData = (employees, config = null) => {
 };
 
 const EmployeeTable = (props) => {
-    const { employees, requestSort, sortConfig } = useSortableData(props.emp);
+    const { employees, requestSort, sortConfig } = SortableData(props.employees);
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
             return;
@@ -89,4 +89,21 @@ const EmployeeTable = (props) => {
     );
 };
 
-export default Table;
+export default function Table() {
+    return (
+        <div className="Table">
+            <EmployeeTable 
+                employees={[
+                    { id: 1, name: 'Dwight Schrute', role: "Salesman", dob: "January 20th, 1966" },
+                    { id: 2, name: 'Jim Halpert', role: 'Salesman', dob: 'October 20th, 1979' },
+                    { id: 3, name: 'Pam Beesly', role: 'Receptionist', dob: 'March 7th, 1974' },
+                    { id: 4, name: 'Michael Scott', role: 'Regional Manager', dob: 'August 16th, 1962' },
+                    { id: 5, name: 'Ryan Howard', role: 'Junior Salesman', dob: 'July 31st, 1979' },
+                    { id: 6, name: 'Kelly Kapoor', role: 'Customer Service', dob: 'June 24th, 1979' },
+                    { id: 7, name: 'Creed Bratton', role: 'Unknown', dob: 'February 8th, 1943' },
+                    { id: 8, name: 'Angela Martin', role: 'Accounting', dob: 'June 25th, 1971' }
+                ]}
+            />
+        </div>
+    );
+}
