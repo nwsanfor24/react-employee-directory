@@ -6,7 +6,11 @@ function App() {
     return (
         <div>
             <Jumbotron />
-            <Table />
+            <Table
+                employees={[
+                    { id: 1, name: 'Dwight Schrute', role: 'Salesman', dob: 'January 20th, 1966' }
+                ]}
+            />
         </div>
 
     );
