@@ -34,7 +34,42 @@ const sortableData = (employees, config = null) => {
     return { employees: sortedEmployees, requestSort, sortConfig };
 };
 
-
+const EmployeeTable = (props) => {
+    const { employees, requestSort, sortConfig } = useSortableData(props.emp);
+    const getClassNamesFor = (name) => {
+        if (!sortConfig) {
+            return;
+        }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
+    return (
+        <table>
+            <caption>Employee Directory</caption>
+            <thead>
+                <tr>
+                    <th>
+                        <button
+                            type="button"
+                            onClick={() => requestSort('name')}
+                            className={getClassNamesFor('name')}
+                        >
+                        Name
+                        </button>
+                    </th>
+                    <th>
+                        <button
+                            type="button"
+                            onClick={() => requestSort('role')}
+                            className={getClassNamesFor('role')}
+                        >
+                        Role
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    )
+}
 
 // function Table() {
 //     return(
