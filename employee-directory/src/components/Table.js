@@ -43,8 +43,7 @@ const EmployeeTable = (props) => {
         return sortConfig.key === name ? sortConfig.direction : undefined;
     };
     return (
-        <table>
-            <caption>Employee Directory</caption>
+        <table className="table">
             <thead>
                 <tr>
                     <th>
