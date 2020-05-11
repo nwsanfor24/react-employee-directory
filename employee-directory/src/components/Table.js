@@ -1,4 +1,31 @@
-import React, { useState, useMemo} from "react";
+import React, { useState, useMemo } from "react";
+
+const [filterInput, setFilterInput] = useState("");
+
+const handleFilterChange = e => {
+    const value = e.target.value || undefined;
+    setFilterInput(value);
+
+    return(
+        <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="inputGroup-sizing-default">
+                        Search Name Here
+                </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                    value={filterInput}
+                    onChange={handleFilterChange}
+                    placeholder={"Search Name"}
+                />
+        </div>
+    );
+};
+
 
 const SortableData = (employees, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -52,7 +79,7 @@ const EmployeeTable = (props) => {
                             onClick={() => requestSort('name')}
                             className={getClassNamesFor('name'), "btn btn-primary btn-lg active"}
                         >
-                        Name
+                            Name
                         </button>
                     </th>
                     <th scope="col">
@@ -61,7 +88,7 @@ const EmployeeTable = (props) => {
                             onClick={() => requestSort('role')}
                             className={getClassNamesFor('role'), "btn btn-primary btn-lg active"}
                         >
-                        Role
+                            Role
                         </button>
                     </th>
                     <th scope="col">
@@ -70,7 +97,7 @@ const EmployeeTable = (props) => {
                             onClick={() => requestSort('dob')}
                             className={getClassNamesFor('dob'), "btn btn-primary btn-lg active"}
                         >
-                        Date of Birth
+                            Date of Birth
                         </button>
                     </th>
                 </tr>
@@ -91,7 +118,8 @@ const EmployeeTable = (props) => {
 export default function Table() {
     return (
         <div className="Table">
-            <EmployeeTable 
+            <handleFilterChange />
+            <EmployeeTable
                 employees={[
                     { id: 1, name: 'Dwight Schrute', role: "Salesman", dob: "January 20th, 1966" },
                     { id: 2, name: 'Jim Halpert', role: 'Salesman', dob: 'October 20th, 1979' },
